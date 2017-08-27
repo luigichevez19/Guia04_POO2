@@ -46,10 +46,10 @@ public class TipoServ extends HttpServlet {
                 mens = new CtrlTipos().guar(obje) ? "Datos guardados exitosamente" : "Datos NO guardados";
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
-            else if(CRUD.equals("Consultar"))
+            if(CRUD.equals("Consultar"))
             {
                 //Para un objeto
-                Integer codi = Integer.parseInt(request.getParameter("codi"));
+                Integer codi = Integer.parseInt(request.getParameter("codiradio"));
                 Tipos obje = new CtrlTipos().cons(codi);
              
                if(obje != null)
@@ -60,11 +60,19 @@ public class TipoServ extends HttpServlet {
                }
                               
             }
-             else if(CRUD.equals("Eliminar"))
+            if(CRUD.equals("Modificar"))
             {
              
-                  Tipos obj = new Tipos();
-               obj.setCodiTipo(Integer.parseInt(request.getParameter("codiEquiRadi").isEmpty()?"-1":request.getParameter("codiEqui")));
+               Tipos obj = new Tipos();
+               obj.setCodiTipo(Integer.parseInt(request.getParameter("codi").isEmpty()?"-1":request.getParameter("codi")));
+               obj.setNombTipo(request.getParameter("nomb"));
+               mens = new CtrlTipos().edit(obj) ? "Datos Actualizados exitosamente" : "Datos NO Actualizados";
+            }
+            if(CRUD.equals("Eliminar"))
+            {
+             
+               Tipos obj = new Tipos();
+               obj.setCodiTipo(Integer.parseInt(request.getParameter("codiradio").isEmpty()?"-1":request.getParameter("codiradio")));
                if (new CtrlTipos().dele(obj)) 
                 {
                     mens = "Eliminar";

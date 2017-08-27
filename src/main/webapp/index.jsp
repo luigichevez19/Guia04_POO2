@@ -24,6 +24,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <h4>Guía 04 - POO2</h4>
+                      <h4>${mens}</h4>
                     <form method="POST" action="TipoServ">
                         <input type="hidden" id="codi" name="codi" value= "${codi}"/>
                         <div class="form-group">
@@ -34,6 +35,7 @@
                             </div>
                         </div>
                         <input type="submit" name="TipoBton" value="Guardar" class="btn btn-sm btn-success" />
+                         <input type="submit" name="TipoBton" value="Modificar" class="btn btn-sm btn-success" />
                     </form>
                 </div>
             </div>
@@ -52,18 +54,18 @@
                for (Tipos temp: test)
                 {%>
 		<tr>
-                    <td><input type="radio" name="codi" value="<%=temp.getCodiTipo()%>"></input>
+                    <td><input type="radio" name="codiradio" value="<%=temp.getCodiTipo()%>"></input>
                        <label for="<%=temp.getCodiTipo()%>"></label></td></td>
 		
                         <td><%=temp.getNombTipo()%></td>
                 </tr>
                 <%}
                 %>
-		<input type="submit" name="TipoBton" value="Consultar" class="btn btn-sm btn-success" />
-                <input type="submit" name="TipoBton" value="Eliminar" class="btn btn-sm btn-success" />
 	</tbody>
         
 </table>
+        <input type="submit" name="TipoBton" value="Consultar" class="btn btn-sm btn-success" />
+                <input type="submit" name="TipoBton" value="Eliminar" class="btn btn-sm btn-success" />
                 </form>
         </div>
     </body>
